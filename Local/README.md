@@ -10,5 +10,7 @@ Below are descriptions of the role of each R script found within this directory.
 
 **MW_predictions.R** calculates the predictions across the entire study region from the model fitting output. This script requires each unique model fit object (i.e., each of the output files created from the numerical integration approach performed on the ROAR supercomputer) to crate a single posterior distribution for each of the parameters.  The script creates a number of different data objects and prediction summaries that are required for the analysis and summary scripts found within this directory.
 
-**MW_Analysis.R** creates all the figures and tables that summarize the jsPGA parameter estimates. This script also produces the map of the raw values for each of the 6 habitat covariates and the mean catch values for each species for each sampled lake (where catch is greater than 0 for that species).
+**MW_Analysis.R** creates all the figures and tables that summarize the jsPGA parameter estimates. This script also produces the map of the raw values for each of the 6 habitat covariates and the mean catch values for each species within their respectively sampled lakes.
+
+**Pred_summary.R** creates figures and tables associated with the predicted lake temperatures from the GCM models and predicted changes in abundance and extirpation probabilities from the fitted model output.
 
