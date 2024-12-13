@@ -11,6 +11,54 @@ TRC = function(temp, CTmax, Topt, sigma){
   return(trc)
 }
 
+# # vector of all file names within folder
+# x <- list.files("output/MW/")
+# simnum <- sapply(strsplit(str_remove(x,".rds"),"_"),"[[",2)
+# 
+# # reading in each of the RDS files
+# out_list <- list()
+# for(i in 1:length(x)){
+#   name <- paste0("iter",simnum[i])
+#   out_list[[name]] <- readRDS(paste0("output/MW/",x[i]))
+#   print(i)
+# }
+# # merging all stan objects (each model realization posterior) into single object (single posterior for analysis)
+# out <- sflist2stanfit(out_list)
+# rm(out_list)
+
+# saving single stan object containing all model posteriors
+# qs::qsave(out,file="output/MWpost.qs")
+# 
+# out <- qs::qread("output/MWpost.qs")
+# chains <- rstan::extract(out,permuted=TRUE,
+#                          pars=c("beta",
+#                                 "theta",
+#                                 "phi",
+#                                 "A",
+#                                 "tau",
+#                                 "Sigma",
+#                                 "Pi"))
+# 
+# # beta
+# dimnames(chains$beta)[[2]] <- colnames(dat$X)
+# dimnames(chains$beta)[[3]] <- colnames(dat$Y)
+# # theta
+# dimnames(chains$theta)[[2]] <- colnames(dat$Y)
+# dimnames(chains$theta)[[3]] <- colnames(dat$E)
+# # A
+# dimnames(chains$A)[[2]] <- paste0("A",1:dat$M)
+# dimnames(chains$A)[[3]] <- colnames(dat$Y)
+# #tau
+# dimnames(chains$tau)[[2]] <- colnames(dat$Y)
+# #Sigma
+# dimnames(chains$Sigma)[[2]] <- colnames(dat$Y)
+# dimnames(chains$Sigma)[[3]] <- colnames(dat$Y)
+# #Pi
+# dimnames(chains$Pi)[[2]] <- colnames(dat$Y)
+# dimnames(chains$Pi)[[3]] <- colnames(dat$Y)
+# 
+# qs::qsave(chains,"output/MWchains.qs")
+
 out <- qs::qread("output/MWpost.qs")
 standat <- readRDS("data/MWfish_standat.rds")
 
